@@ -9,7 +9,7 @@
 
 ### เปิดฟีเจอร์ Windows ที่จำเป็น
 เปิด PowerShell (Admin) แล้วรัน:
-```powershell
+
 dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V-All /all /norestart
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
