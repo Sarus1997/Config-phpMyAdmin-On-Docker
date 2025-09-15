@@ -1,6 +1,175 @@
+# Docker Development Environment บน Windows (PHP + MySQL + phpMyAdmin)
+
+## 1️⃣ เตรียมเครื่อง Windows
+
+### เปิด Virtualization ใน BIOS
+```bash
+1. รีสตาร์ทเครื่อง → เข้า BIOS (F2/DEL)  
+2. เปิด **Intel VT-x** หรือ **AMD-V / SVM Mode** → Save & Restart  
+
+### เปิดฟีเจอร์ Windows ที่จำเป็น
+เปิด PowerShell (Admin) แล้วรัน:
+```powershell
+dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V-All /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+```
+
+- รีสตาร์ทเครื่อง 1 ครั้ง
+
+### ติดตั้ง WSL2
+```bash
+wsl --install
+wsl --status   # ตรวจสอบว่า Default Version = 2
+```
+
+## 2️⃣ ติดตั้ง Docker Desktop
+
+1.ดาวน์โหลด: Docker Desktop
+2.ติดตั้งและเปิดโปรแกรม
+3.ตั้งค่า:
+    - Settings → General → Use the WSL 2 based engine ✅
+    - Settings → Resources → WSL Integration → Enable Ubuntu ✅
+4.ทดสอบ Docker:
+```bash
+docker run hello-world
+```
+
+## 3️⃣ สร้างโฟลเดอร์โปรเจกต์
+
+```bash
+mkdir D:\project-folder
+cd D:\project-folder
+mkdir www
+```
+- เก็บโค้ด PHP ใน www
+- ตัวอย่างไฟล์ index.php:
+```bash
+<?php
+phpinfo();
+?>
+```
+
+## 4️⃣ สร้างไฟล์ docker-compose.yml
+ไฟล์: ``` D:\project-folder\docker-compose.yml ```
+```bash
+
+```bash
+services:
+  web:
+    image: php:8.2-apache
+    container_name: my_php
+    ports:
+      - "8080:80"
+    volumes:
+      - ./www:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: my_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: my_phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_USER: user
+      PMA_PASSWORD: password
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+
+volumes:
+  db_data:
+
+```
+
+## 6️⃣ การใช้งานเบื้องต้น
+
+```bash
+cd D:\project-folder
+docker-compose up -d
+```
+ตรวจสอบ container:
+```bash
+docker ps
+```
+- my_php → PHP http://localhost:8080
+- my_db → MySQL port 3307
+- my_phpmyadmin → phpMyAdmin http://localhost:8081
+
+## 5️⃣ รัน Docker Containers
+เข้าเว็บ PHP
+    - http://localhost:8080
+
+เข้า phpMyAdmin
+    - http://localhost:8081
+    - Username: user
+    - Password: password
+
+```bash
+cd D:\project-folder
+docker-compose up -d
+```
+ตรวจสอบ container:
+```bash
+docker ps
+```
+- my_php → PHP http://localhost:8080
+- my_db → MySQL port 3307
+- my_phpmyadmin → phpMyAdmin http://localhost:8081
+
+เข้า MySQL จาก container
+```bash
+docker exec -it my_db mysql -u user -p
+# ใส่ password: password
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## รัน docker
-
 ```bash
 docker-compose up -d
 ```
