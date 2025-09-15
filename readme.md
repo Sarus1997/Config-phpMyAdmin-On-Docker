@@ -1,4 +1,4 @@
-# Docker Development Environment บน Windows (PHP + MySQL + phpMyAdmin)
+# 🐳 Docker Development Environment บน Windows (PHP + MySQL + phpMyAdmin)
 
 ## 1️⃣ เตรียมเครื่อง Windows
 
@@ -9,7 +9,8 @@
 
 ### เปิดฟีเจอร์ Windows ที่จำเป็น
 เปิด PowerShell (Admin) แล้วรัน:
-
+```
+```powershell
 dism.exe /online /enable-feature /featurename:Microsoft-Hyper-V-All /all /norestart
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
@@ -38,14 +39,14 @@ docker run hello-world
 
 ## 3️⃣ สร้างโฟลเดอร์โปรเจกต์
 
-```bash
+```powershell
 mkdir D:\my-project
 cd D:\my-project
 mkdir www
 ```
 - เก็บโค้ด PHP ใน www
 - ตัวอย่างไฟล์ index.php:
-```bash
+```php
 <?php
 phpinfo();
 ?>
