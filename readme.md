@@ -101,7 +101,6 @@ volumes:
 
 ```bash
 cd D:\my-project
-docker-compose up -d
 ```
 ตรวจสอบ container:
 ```bash
@@ -123,7 +122,7 @@ docker ps
 ### รัน docker
 ```bash
 cd D:\my-project
-docker-compose up -d
+D:\my-project docker-compose up -d
 ```
 ### ตรวจสอบ container:
 ```bash
