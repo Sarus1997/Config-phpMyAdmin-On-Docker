@@ -64,7 +64,7 @@ phpinfo();
 ## 4️⃣ สร้างไฟล์ docker-compose.yml
 ไฟล์: ` D:\my-project\docker-compose.yml `
 
-```bash
+```yaml
 services:
   web:
     image: php:8.2-apache
