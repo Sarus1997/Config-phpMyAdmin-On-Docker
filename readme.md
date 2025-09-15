@@ -41,6 +41,7 @@ wsl --status   # ตรวจสอบว่า Default Version = 2
     </li>
 </ul>
 <p> 4. ทดสอบ Docker: </p>
+
 ```bash
 docker run hello-world
 ```
