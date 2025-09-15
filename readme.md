@@ -123,7 +123,7 @@ docker ps
 
 ### รัน docker
 ```bash
-cd D:\my-folder
+cd D:\my-project
 docker-compose up -d
 ```
 ### ตรวจสอบ container:
@@ -137,24 +137,6 @@ docker exec -it my_phpmyadmin bash
 - my_php → PHP http://localhost:8080
 - my_db → MySQL port 3307
 - my_phpmyadmin → phpMyAdmin http://localhost:8081
-
-### หยุด/ลบ docker
-```bash
-docker-compose down
-```
-### ดู log container
-```bash
-docker-compose logs -f
-```
-### เข้า MySQL จาก container
-```bash
-docker exec -it my_db mysql -u user -p
-# ใส่ password: password
-```
-### เข้า shell container
-```bash
-docker exec -it my_php bash
-```
 
 ## 7️⃣ คำสั่ง Docker Compose ที่สำคัญ
 | คำสั่ง                        | ใช้ทำอะไร                             |
