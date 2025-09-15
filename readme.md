@@ -25,12 +25,12 @@ wsl --status   # ตรวจสอบว่า Default Version = 2
 
 ## 2️⃣ ติดตั้ง Docker Desktop
 <p>
-1.ดาวน์โหลด: Docker Desktop
-2.ติดตั้งและเปิดโปรแกรม
-3.ตั้งค่า:
-    - Settings → General → Use the WSL 2 based engine ✅
-    - Settings → Resources → WSL Integration → Enable Ubuntu ✅
-4.ทดสอบ Docker:
+1.ดาวน์โหลด: Docker Desktop <br>
+2.ติดตั้งและเปิดโปรแกรม <br>
+3.ตั้งค่า: <br>
+    - Settings → General → Use the WSL 2 based engine ✅ <br>
+    - Settings → Resources → WSL Integration → Enable Ubuntu ✅ <br>
+4.ทดสอบ Docker: <br>
 </p>
 ```bash
 docker run hello-world
