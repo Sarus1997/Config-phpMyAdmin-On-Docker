@@ -121,79 +121,49 @@ docker ps
     - Username: user
     - Password: password
 
+### รัน docker
 ```bash
-cd D:\project-folder
+cd D:\my-folder
 docker-compose up -d
 ```
-ตรวจสอบ container:
+### ตรวจสอบ container:
 ```bash
 docker ps
+```
+### ติดตั้ง phpmyadmin
+```bash
+docker exec -it my_phpmyadmin bash
 ```
 - my_php → PHP http://localhost:8080
 - my_db → MySQL port 3307
 - my_phpmyadmin → phpMyAdmin http://localhost:8081
 
-เข้า MySQL จาก container
+### หยุด/ลบ docker
+```bash
+docker-compose down
+```
+### ดู log container
+```bash
+docker-compose logs -f
+```
+### เข้า MySQL จาก container
 ```bash
 docker exec -it my_db mysql -u user -p
 # ใส่ password: password
 ```
 
+## 7️⃣ คำสั่ง Docker Compose ที่สำคัญ
+| คำสั่ง                        | ใช้ทำอะไร                             |
+| ----------------------------- | ------------------------------------- |
+| `docker-compose up -d`        | รัน container แบบ background          |
+| `docker-compose down`         | หยุดและลบ container (volume ไม่ถูกลบ) |
+| `docker-compose logs -f`      | ดู log ของ container แบบ real-time    |
+| `docker exec -it my_php bash` | เข้า shell ของ container PHP          |
+| `docker exec -it my_db bash`  | เข้า shell ของ container MySQL        |
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## รัน docker
-```bash
-docker-compose up -d
-```
-
-## หยุด/ลบ docker
-```bash
-docker-compose down
-```
-
-## ติดตั้ง phpmyadmin
-```bash
-docker exec -it my_phpmyadmin bash
-```
-
-## ดู log container
-```bash
-docker-compose logs -f
-```
 
 ## เข้า shell container
 ```bash
 docker exec -it my_php bash
 ```
-
-- PHP container → เปิดเว็บ http://localhost:8080
-- phpMyAdmin → จัดการ MySQL ผ่าน http://localhost:8081
-- MySQL container → port 3307 สำหรับเชื่อมจาก client อื่น (user: user, password: password)
