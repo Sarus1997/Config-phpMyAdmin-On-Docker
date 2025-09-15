@@ -38,8 +38,8 @@ docker run hello-world
 ## 3️⃣ สร้างโฟลเดอร์โปรเจกต์
 
 ```bash
-mkdir D:\project-folder
-cd D:\project-folder
+mkdir D:\my-project
+cd D:\my-project
 mkdir www
 ```
 - เก็บโค้ด PHP ใน www
@@ -51,7 +51,7 @@ phpinfo();
 ```
 
 ## 4️⃣ สร้างไฟล์ docker-compose.yml
-ไฟล์: ``` D:\project-folder\docker-compose.yml ```
+ไฟล์: ``` D:\my-project\docker-compose.yml ```
 ```bash
 
 ```bash
@@ -101,7 +101,7 @@ volumes:
 ## 6️⃣ การใช้งานเบื้องต้น
 
 ```bash
-cd D:\project-folder
+cd D:\my-project
 docker-compose up -d
 ```
 ตรวจสอบ container:
@@ -151,6 +151,10 @@ docker-compose logs -f
 docker exec -it my_db mysql -u user -p
 # ใส่ password: password
 ```
+### เข้า shell container
+```bash
+docker exec -it my_php bash
+```
 
 ## 7️⃣ คำสั่ง Docker Compose ที่สำคัญ
 | คำสั่ง                        | ใช้ทำอะไร                             |
@@ -160,10 +164,3 @@ docker exec -it my_db mysql -u user -p
 | `docker-compose logs -f`      | ดู log ของ container แบบ real-time    |
 | `docker exec -it my_php bash` | เข้า shell ของ container PHP          |
 | `docker exec -it my_db bash`  | เข้า shell ของ container MySQL        |
-
-
-
-## เข้า shell container
-```bash
-docker exec -it my_php bash
-```
